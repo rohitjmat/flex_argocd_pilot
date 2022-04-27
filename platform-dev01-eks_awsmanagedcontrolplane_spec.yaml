@@ -39,8 +39,8 @@ spec:
     mapRoles:
     - groups:
       - system:masters
-      rolearn: arn:aws:iam::548752297434:role/v1@team@orchestration-base
-      username: orchestration-base
+      rolearn: arn:aws:iam::548752297434:role/v1@team@orchestration-delivery
+      username: orchestration-delivery
   identityRef:
     kind: AWSClusterRoleIdentity
     name: platform-dev-one-twilio
