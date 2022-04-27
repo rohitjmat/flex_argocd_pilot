@@ -1,2 +1,2 @@
-# flex_argocd_pilot
-YAML files for ArgoCD setup
+# argocd_definitions_flex_pilot
+YAML files used during FLEX pilot ArgoCD install

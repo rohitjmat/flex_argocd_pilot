@@ -1,0 +1,57 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"cluster.x-k8s.io/v1beta1","kind":"Cluster","metadata":{"annotations":{},"name":"platform-dev01-eks","namespace":"default"},"spec":{"clusterNetwork":{"pods":{"cidrBlocks":["192.168.0.0/16"]}},"controlPlaneRef":{"apiVersion":"controlplane.cluster.x-k8s.io/v1beta1","kind":"AWSManagedControlPlane","name":"platform-dev01-eks-control-plane"},"infrastructureRef":{"apiVersion":"controlplane.cluster.x-k8s.io/v1beta1","kind":"AWSManagedControlPlane","name":"platform-dev01-eks-control-plane"}}}
+  creationTimestamp: "2022-03-31T02:11:41Z"
+  finalizers:
+  - cluster.cluster.x-k8s.io
+  generation: 2
+  name: platform-dev01-eks
+  namespace: default
+  resourceVersion: "1100892"
+  uid: 069a0286-9fb9-4da7-a81c-713e6b8207e4
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  controlPlaneEndpoint:
+    host: https://5A393164884CBB45C715A433FD0B8908.gr7.us-east-1.eks.amazonaws.com
+    port: 443
+  controlPlaneRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+    kind: AWSManagedControlPlane
+    name: platform-dev01-eks-control-plane
+    namespace: default
+  infrastructureRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+    kind: AWSManagedControlPlane
+    name: platform-dev01-eks-control-plane
+    namespace: default
+status:
+  conditions:
+  - lastTransitionTime: "2022-03-31T02:26:44Z"
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2022-03-31T02:26:16Z"
+    status: "True"
+    type: ControlPlaneInitialized
+  - lastTransitionTime: "2022-03-31T02:26:44Z"
+    status: "True"
+    type: ControlPlaneReady
+  - lastTransitionTime: "2022-03-31T02:26:44Z"
+    status: "True"
+    type: InfrastructureReady
+  controlPlaneReady: true
+  failureDomains:
+    us-east-1a:
+      controlPlane: true
+    us-east-1b:
+      controlPlane: true
+    us-east-1c:
+      controlPlane: true
+  infrastructureReady: true
+  observedGeneration: 2
+  phase: Provisioned

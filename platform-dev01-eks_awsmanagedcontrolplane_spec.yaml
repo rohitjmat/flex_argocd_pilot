@@ -1,0 +1,241 @@
+apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+kind: AWSManagedControlPlane
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"controlplane.cluster.x-k8s.io/v1beta1","kind":"AWSManagedControlPlane","metadata":{"annotations":{},"name":"platform-dev01-eks-control-plane","namespace":"default"},"spec":{"associateOIDCProvider":true,"disableVPCCNI":false,"eksClusterName":"platform-dev01-eks","endpointAccess":{"private":true,"public":true},"iamAuthenticatorConfig":{"mapRoles":[{"groups":["system:masters"],"rolearn":"arn:aws:iam::548752297434:role/v1@team@orchestration-base","username":"orchestration-base"}]},"identityRef":{"kind":"AWSClusterRoleIdentity","name":"platform-dev-one-twilio"},"logging":{"apiServer":true,"audit":true,"authenticator":true,"controllerManager":true,"scheduler":true},"region":"us-east-1","sshKeyName":"cluster-api.kubernetes.twilio.com","version":"v1.21.2"}}
+  creationTimestamp: "2022-03-31T02:12:11Z"
+  finalizers:
+  - awsmanagedcontrolplane.controlplane.cluster.x-k8s.io
+  generation: 10
+  labels:
+    cluster.x-k8s.io/cluster-name: platform-dev01-eks
+  name: platform-dev01-eks-control-plane
+  namespace: default
+  ownerReferences:
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Cluster
+    name: platform-dev01-eks
+    uid: 069a0286-9fb9-4da7-a81c-713e6b8207e4
+  resourceVersion: "1113275"
+  uid: 755fa1a2-1826-40c9-8614-cc757032ddaa
+spec:
+  associateOIDCProvider: true
+  bastion:
+    allowedCIDRBlocks:
+    - 0.0.0.0/0
+    enabled: false
+  controlPlaneEndpoint:
+    host: https://5A393164884CBB45C715A433FD0B8908.gr7.us-east-1.eks.amazonaws.com
+    port: 443
+  disableVPCCNI: false
+  eksClusterName: platform-dev01-eks
+  endpointAccess:
+    private: true
+    public: true
+  iamAuthenticatorConfig:
+    mapRoles:
+    - groups:
+      - system:masters
+      rolearn: arn:aws:iam::548752297434:role/v1@team@orchestration-base
+      username: orchestration-base
+  identityRef:
+    kind: AWSClusterRoleIdentity
+    name: platform-dev-one-twilio
+  logging:
+    apiServer: true
+    audit: true
+    authenticator: true
+    controllerManager: true
+    scheduler: true
+  network:
+    cni:
+      cniIngressRules:
+      - description: bgp (calico)
+        fromPort: 179
+        protocol: tcp
+        toPort: 179
+      - description: IP-in-IP (calico)
+        fromPort: -1
+        protocol: "4"
+        toPort: 65535
+    subnets:
+    - availabilityZone: us-east-1a
+      cidrBlock: 10.0.0.0/20
+      id: subnet-05119bbee7c3a4b9c
+      isPublic: true
+      natGatewayId: nat-0566dabd7ea1f764f
+      routeTableId: rtb-05653dfb16e33ba6f
+      tags:
+        Name: platform-dev01-eks-subnet-public-us-east-1a
+        kubernetes.io/cluster/platform-dev01-eks: shared
+        kubernetes.io/role/elb: "1"
+        sigs.k8s.io/cluster-api-provider-aws/cluster/platform-dev01-eks: owned
+        sigs.k8s.io/cluster-api-provider-aws/role: public
+    - availabilityZone: us-east-1a
+      cidrBlock: 10.0.64.0/18
+      id: subnet-0dda58aae7fae5fc1
+      isPublic: false
+      routeTableId: rtb-0b1614617d2f8ccf3
+      tags:
+        Name: platform-dev01-eks-subnet-private-us-east-1a
+        kubernetes.io/cluster/platform-dev01-eks: shared
+        kubernetes.io/role/internal-elb: "1"
+        sigs.k8s.io/cluster-api-provider-aws/cluster/platform-dev01-eks: owned
+        sigs.k8s.io/cluster-api-provider-aws/role: private
+    - availabilityZone: us-east-1b
+      cidrBlock: 10.0.16.0/20
+      id: subnet-014b7fb5c042cc5a4
+      isPublic: true
+      natGatewayId: nat-096a38eeb931de450
+      routeTableId: rtb-09ca2ef755cb7ee72
+      tags:
+        Name: platform-dev01-eks-subnet-public-us-east-1b
+        kubernetes.io/cluster/platform-dev01-eks: shared
+        kubernetes.io/role/elb: "1"
+        sigs.k8s.io/cluster-api-provider-aws/cluster/platform-dev01-eks: owned
+        sigs.k8s.io/cluster-api-provider-aws/role: public
+    - availabilityZone: us-east-1b
+      cidrBlock: 10.0.128.0/18
+      id: subnet-0b6d36b389ab29605
+      isPublic: false
+      routeTableId: rtb-0b8998dabd9c12509
+      tags:
+        Name: platform-dev01-eks-subnet-private-us-east-1b
+        kubernetes.io/cluster/platform-dev01-eks: shared
+        kubernetes.io/role/internal-elb: "1"
+        sigs.k8s.io/cluster-api-provider-aws/cluster/platform-dev01-eks: owned
+        sigs.k8s.io/cluster-api-provider-aws/role: private
+    - availabilityZone: us-east-1c
+      cidrBlock: 10.0.32.0/20
+      id: subnet-0819795635d547895
+      isPublic: true
+      natGatewayId: nat-05bc2efdd522786d0
+      routeTableId: rtb-06feeb57a8b2f7dcc
+      tags:
+        Name: platform-dev01-eks-subnet-public-us-east-1c
+        kubernetes.io/cluster/platform-dev01-eks: shared
+        kubernetes.io/role/elb: "1"
+        sigs.k8s.io/cluster-api-provider-aws/cluster/platform-dev01-eks: owned
+        sigs.k8s.io/cluster-api-provider-aws/role: public
+    - availabilityZone: us-east-1c
+      cidrBlock: 10.0.192.0/18
+      id: subnet-0ce002ebd0051ff8f
+      isPublic: false
+      routeTableId: rtb-02c109146a8336a32
+      tags:
+        Name: platform-dev01-eks-subnet-private-us-east-1c
+        kubernetes.io/cluster/platform-dev01-eks: shared
+        kubernetes.io/role/internal-elb: "1"
+        sigs.k8s.io/cluster-api-provider-aws/cluster/platform-dev01-eks: owned
+        sigs.k8s.io/cluster-api-provider-aws/role: private
+    vpc:
+      availabilityZoneSelection: Ordered
+      availabilityZoneUsageLimit: 3
+      cidrBlock: 10.0.0.0/16
+      id: vpc-0de8ad3782c0261bd
+      internetGatewayId: igw-04fcc1b6dd6d56417
+      tags:
+        Name: platform-dev01-eks-vpc
+        claimed_ownership: "false"
+        platform:role: "null"
+        platform:system: "null"
+        platform:team: platform-infra-containers
+        sigs.k8s.io/cluster-api-provider-aws/cluster/platform-dev01-eks: owned
+        sigs.k8s.io/cluster-api-provider-aws/role: common
+        tcss:classification: green
+        tcss:creation-date: "2022-03-31T02:12:42Z"
+        tcss:creator: arn:aws:sts::548752297434:assumed-role/cluster-api.kubernetes.twilio.com/1648692104398800489
+        tcss:network-exposure: "null"
+        tcss:owner: platform-infra-containers
+        tcss:tag-version: "1"
+  region: us-east-1
+  roleName: platform-dev01-eks-iam-service-role
+  sshKeyName: cluster-api.kubernetes.twilio.com
+  tokenMethod: iam-authenticator
+  version: v1.21
+status:
+  conditions:
+  - lastTransitionTime: "2022-03-31T02:26:43Z"
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2022-03-31T02:14:40Z"
+    status: "True"
+    type: ClusterSecurityGroupsReady
+  - lastTransitionTime: "2022-03-31T02:26:28Z"
+    status: "True"
+    type: EKSAddonsConfigured
+  - lastTransitionTime: "2022-03-31T02:26:15Z"
+    reason: created
+    severity: Info
+    status: "False"
+    type: EKSControlPlaneCreating
+  - lastTransitionTime: "2022-03-31T02:26:43Z"
+    status: "True"
+    type: EKSControlPlaneReady
+  - lastTransitionTime: "2022-03-31T02:26:28Z"
+    status: "True"
+    type: EKSIdentityProviderConfigured
+  - lastTransitionTime: "2022-03-31T02:26:43Z"
+    status: "True"
+    type: IAMAuthenticatorConfigured
+  - lastTransitionTime: "2022-03-31T02:14:40Z"
+    status: "True"
+    type: IAMControlPlaneRolesReady
+  - lastTransitionTime: "2022-03-31T02:12:47Z"
+    status: "True"
+    type: InternetGatewayReady
+  - lastTransitionTime: "2022-03-31T02:14:35Z"
+    status: "True"
+    type: NatGatewaysReady
+  - lastTransitionTime: "2022-03-31T02:14:42Z"
+    status: "True"
+    type: RouteTablesReady
+  - lastTransitionTime: "2022-03-31T02:12:46Z"
+    status: "True"
+    type: SubnetsReady
+  - lastTransitionTime: "2022-03-31T02:12:43Z"
+    status: "True"
+    type: VpcReady
+  externalManagedControlPlane: true
+  failureDomains:
+    us-east-1a:
+      controlPlane: true
+    us-east-1b:
+      controlPlane: true
+    us-east-1c:
+      controlPlane: true
+  initialized: true
+  networkStatus:
+    securityGroups:
+      cluster:
+        id: sg-00f42b84419d0a556
+        name: eks-cluster-sg-platform-dev01-eks-19075644
+        tags:
+          Name: eks-cluster-sg-platform-dev01-eks-19075644
+          aws:eks:cluster-name: platform-dev01-eks
+          kubernetes.io/cluster/platform-dev01-eks: owned
+      node:
+        id: sg-00f42b84419d0a556
+        name: eks-cluster-sg-platform-dev01-eks-19075644
+        tags:
+          Name: eks-cluster-sg-platform-dev01-eks-19075644
+          aws:eks:cluster-name: platform-dev01-eks
+          kubernetes.io/cluster/platform-dev01-eks: owned
+      node-eks-additional:
+        id: sg-07276483087d20ae0
+        name: platform-dev01-eks-node-eks-additional
+        tags:
+          Name: platform-dev01-eks-node-eks-additional
+          sigs.k8s.io/cluster-api-provider-aws/cluster/platform-dev01-eks: owned
+          sigs.k8s.io/cluster-api-provider-aws/role: node-eks-additional
+  oidcProvider:
+    arn: arn:aws:iam::548752297434:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5A393164884CBB45C715A433FD0B8908
+    trustPolicy: '{  "Version": "2012-10-17",  "Statement": [    {      "Principal":
+      {        "Federated": [          "arn:aws:iam::548752297434:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/5A393164884CBB45C715A433FD0B8908"        ]      },      "Effect":
+      "Allow",      "Action": [        "sts:AssumeRoleWithWebIdentity"      ],      "Condition":
+      {        "ForAnyValue:StringLike": {          "oidc.eks.us-east-1.amazonaws.com/id/5A393164884CBB45C715A433FD0B8908:sub":
+      [            "system:serviceaccount:${SERVICE_ACCOUNT_NAMESPACE}:${SERVICE_ACCOUNT_NAME}"          ]        }      }    }  ]}'
+  ready: true
