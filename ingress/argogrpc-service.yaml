@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/backend-protocol-version: HTTP2
+  labels:
+    app: argogrpc
+  name: argogrpc
+  namespace: argocd-client
+  resourceVersion: "75219003"
+  uid: decb88b2-d076-4dbe-8606-718187c1cae1
+spec:
+  clusterIP: 172.20.138.236
+  clusterIPs:
+  - 172.20.138.236
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: "443"
+    nodePort: 30652
+    port: 443
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: argocd-server
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
