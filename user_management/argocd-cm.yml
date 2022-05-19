@@ -12,3 +12,5 @@ metadata:
   namespace: argocd-client
   resourceVersion: "59757719"
   uid: a792ef37-ac62-40b4-a653-691b8d8abd11
+data:
+  accounts.testuser: apiKey, login
