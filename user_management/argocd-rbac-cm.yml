@@ -12,3 +12,7 @@ metadata:
   namespace: argocd-client
   resourceVersion: "59757743"
   uid: 603a052a-3fb0-4dcb-b784-32a6aa853efd
+data:
+  policy.csv: |
+    p, role:test-role, applications, *, test-project/*, allow
+    g, testuser, role:test-role
